@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta CNPJ</title>
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #3b82f6;
+  --green: #22c55e;
+  --red: #ef4444;
+  --border: #334155;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  padding: 20px;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+h1 { font-size: 1.5rem; margin-bottom: 16px; }
+h2 { font-size: 1.125rem; margin: 24px 0 12px; color: var(--accent); }
+.input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+input {
+  flex: 1;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 16px;
+}
+input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+button {
+  padding: 12px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.secondary { background: var(--border); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.field {
+  background: var(--bg);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.field-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.field-value { font-weight: 500; word-break: break-word; }
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge.green { background: #14532d; color: var(--green); }
+.badge.red { background: #7f1d1d; color: var(--red); }
+.loading { display: none; text-align: center; padding: 40px; color: var(--muted); }
+.error { 
+  display: none; 
+  background: #7f1d1d; 
+  color: #fecaca; 
+  padding: 12px; 
+  border-radius: 8px; 
+  margin-bottom: 16px; 
+}
+.stats {
+  display: flex;
+  gap: 16px;
+  margin: 16px 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 0.875rem;
+}
+td, th {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+th { color: var(--muted); font-weight: 500; }
+pre {
+  background: var(--bg);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  display: none;
+  white-space: pre-wrap;
+}
+.toolbar { display: flex; gap: 8px; margin: 16px 0; }
+@media (max-width: 640px) {
+  .input-group { flex-direction: column; }
+  button { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>Consulta CNPJ</h1>
+    <div class="input-group">
+      <input id="cnpjInput" placeholder="00.000.000/0000-00" maxlength="18">
+      <button id="btnConsultar">Consultar</button>
+    </div>
+    <div id="error" class="error"></div>
+    <div id="loading" class="loading">Consultando...</div>
+  </div>
+
+  <div id="resultado" style="display:none">
+    <div class="card">
+      <h2>Resumo Principal</h2>
+      <div id="resumo" class="grid"></div>
+      <div class="stats">
+        <span id="contador">0 campos preenchidos</span>
+      </div>
+      <div class="toolbar">
+        <button id="btnJson" class="secondary">Ver JSON Bruto</button>
+        <button id="btnCopiar" class="secondary">Copiar JSON</button>
+      </div>
+      <pre id="jsonRaw"></pre>
+    </div>
+
+    <div class="card">
+      <h2>Todos os Dados da API</h2>
+      <div id="tabelaDados"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const input = $('cnpjInput');
+const btn = $('btnConsultar');
+const loading = $('loading');
+const error = $('error');
+const resultado = $('resultado');
+const resumo = $('resumo');
+const tabelaDados = $('tabelaDados');
+const jsonRaw = $('jsonRaw');
+const contador = $('contador');
+
+let dadosAtuais = null;
+
+// Máscara CNPJ
+input.addEventListener('input', e => {
+  let v = e.target.value.replace(/\D/g, '');
+  v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+  v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+  v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+  v = v.replace(/(\d{4})(\d)/, '$1-$2');
+  e.target.value = v;
+});
+
+// Enter = consultar
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') consultar();
+});
+
+btn.addEventListener('click', consultar);
+$('btnJson').addEventListener('click', () => {
+  jsonRaw.style.display = jsonRaw.style.display === 'none' ? 'block' : 'none';
+});
+$('btnCopiar').addEventListener('click', () => {
+  navigator.clipboard.writeText(JSON.stringify(dadosAtuais, null, 2));
+  $('btnCopiar').textContent = 'Copiado!';
+  setTimeout(() => $('btnCopiar').textContent = 'Copiar JSON', 1500);
+});
+
+async function consultar() {
+  const cnpj = input.value.replace(/\D/g, '');
+  if (cnpj.length !== 14) {
+    showError('CNPJ deve ter 14 dígitos');
+    return;
+  }
+  
+  hideError();
+  loading.style.display = 'block';
+  resultado.style.display = 'none';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`https://publica.cnpj.ws/cnpj/${cnpj}`);
+    if (!res.ok) throw new Error(`CNPJ não encontrado ou erro ${res.status}`);
+    const data = await res.json();
+    dadosAtuais = data;
+    renderData(data);
+  } catch (err) {
+    showError(err.message);
+  } finally {
+    loading.style.display = 'none';
+    btn.disabled = false;
+  }
+}
+
+function renderData(data) {
+  // 1. Resumo principal
+  const situacao = data.estabelecimento?.situacao_cadastral;
+  const situacaoClass = situacao === 'Ativa' ? 'green' : 'red';
+  
+  resumo.innerHTML = `
+    ${field('Razão Social', data.razao_social)}
+    ${field('Nome Fantasia', data.estabelecimento?.nome_fantasia)}
+    ${field('Situação', `<span class="badge ${situacaoClass}">${situacao || '-'}</span>`, true)}
+    ${field('CNPJ', formatCNPJ(data.estabelecimento?.cnpj))}
+    ${field('Data Abertura', formatDate(data.estabelecimento?.data_inicio_atividade))}
+    ${field('Endereço', formatEndereco(data.estabelecimento))}
+    ${field('Cidade/UF', `${data.estabelecimento?.cidade?.nome || '-'}/${data.estabelecimento?.estado?.sigla || '-'}`)}
+    ${field('CEP', formatCEP(data.estabelecimento?.cep))}
+    ${field('CNAE Principal', formatCNAE(data.estabelecimento?.atividade_principal))}
+    ${field('Telefone', formatTelefone(data.estabelecimento))}
+    ${field('E-mail', data.estabelecimento?.email)}
+    ${field('Capital Social', formatMoeda(data.capital_social))}
+    ${field('IE', data.estabelecimento?.inscricoes_estaduais?.[0]?.inscricao_estadual || '-')}
+  `;
+
+  // 2. Contador
+  const totalCampos = countFields(data);
+  contador.textContent = `${totalCampos} campos preenchidos`;
+
+  // 3. JSON bruto
+  jsonRaw.textContent = JSON.stringify(data, null, 2);
+
+  // 4. Tabela dinâmica com TUDO
+  tabelaDados.innerHTML = renderObject(data);
+  
+  resultado.style.display = 'block';
+}
+
+function field(label, value, isHtml = false) {
+  if (!value || value === '-') return '';
+  return `
+    <div class="field">
+      <div class="field-label">${label}</div>
+      <div class="field-value">${isHtml ? value : value}</div>
+    </div>
+  `;
+}
+
+function renderObject(obj, level = 0) {
+  if (obj === null || obj === undefined) return '<i>null</i>';
+  if (typeof obj !== 'object') return String(obj);
+  
+  let html = '<table>';
+  for (const [key, val] of Object.entries(obj)) {
+    html += '<tr>';
+    html += `<th>${key}</th>`;
+    html += '<td>';
+    
+    if (Array.isArray(val)) {
+      if (val.length === 0) html += '<i>lista vazia</i>';
+      else html += val.map((item, i) => 
+        `<details><summary>Item ${i+1}</summary>${renderObject(item, level+1)}</details>`
+      ).join('');
+    } else if (typeof val === 'object' && val !== null) {
+      html += `<details><summary>objeto</summary>${renderObject(val, level+1)}</details>`;
+    } else {
+      html += formatValue(key, val);
+    }
+    
+    html += '</td></tr>';
+  }
+  html += '</table>';
+  return html;
+}
+
+function formatValue(key, val) {
+  if (val === null || val === undefined || val === '') return '-';
+  const k = key.toLowerCase();
+  if (k.includes('cnpj')) return formatCNPJ(val);
+  if (k.includes('cep')) return formatCEP(val);
+  if (k.includes('data')) return formatDate(val);
+  if (k.includes('capital') || k.includes('valor')) return formatMoeda(val);
+  if (k.includes('telefone')) return formatTelefone({telefone1: val});
+  return String(val);
+}
+
+function formatCNPJ(v) {
+  if (!v) return '-';
+  return v.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+}
+function formatCEP(v) {
+  if (!v) return '-';
+  return v.replace(/(\d{5})(\d{3})/, '$1-$2');
+}
+function formatDate(v) {
+  if (!v) return '-';
+  return new Date(v).toLocaleDateString('pt-BR');
+}
+function formatMoeda(v) {
+  if (!v) return '-';
+  return Number(v).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+}
+function formatEndereco(est) {
+  if (!est) return '-';
+  return `${est.tipo_logradouro || ''} ${est.logradouro || ''}, ${est.numero || 'S/N'} ${est.complemento || ''} - ${est.bairro || ''}`.trim();
+}
+function formatCNAE(cnae) {
+  if (!cnae) return '-';
+  return `${cnae.id} - ${cnae.descricao}`;
+}
+function formatTelefone(est) {
+  const t1 = est?.telefone1;
+  const t2 = est?.telefone2;
+  const ddd1 = est?.ddd1;
+  const ddd2 = est?.ddd2;
+  let res = [];
+  if (ddd1 && t1) res.push(`(${ddd1}) ${t1}`);
+  if (ddd2 && t2) res.push(`(${ddd2}) ${t2}`);
+  return res.join(' / ') || '-';
+}
+
+function countFields(obj) {
+  let count = 0;
+  function recurse(o) {
+    if (o === null || o === undefined || o === '') return;
+    if (typeof o !== 'object') { count++; return; }
+    if (Array.isArray(o)) { o.forEach(recurse); return; }
+    Object.values(o).forEach(recurse);
+  }
+  recurse(obj);
+  return count;
+}
+
+function showError(msg) {
+  error.textContent = msg;
+  error.style.display = 'block';
+}
+function hideError() {
+  error.style.display = 'none';
+}
+</script>
+</body>
+</html>
