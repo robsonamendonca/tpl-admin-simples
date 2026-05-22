@@ -1,0 +1,259 @@
+/* ====================================================================
+   THEME.CSS — Design Tokens & Color Palettes
+   Office 365 Inspired | MVP Sprint 1 — Atento Platform
+   ==================================================================== */
+
+/* ===== BASE TOKENS (não mudam entre temas) ===== */
+:root {
+  /* Typography */
+  --font-family: 'Segoe UI', 'Segoe UI Web', -apple-system, BlinkMacSystemFont, 
+                 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  
+  --fs-xs: 0.75rem;    /* 12px */
+  --fs-sm: 0.8125rem;  /* 13px */
+  --fs-base: 0.875rem; /* 14px */
+  --fs-lg: 1rem;       /* 16px */
+  --fs-xl: 1.25rem;    /* 20px */
+  --fs-2xl: 1.5rem;    /* 24px */
+  --fs-3xl: 1.875rem;  /* 30px */
+  
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  
+  --lh-tight: 1.25;
+  --lh-base: 1.428571;
+  --lh-relaxed: 1.6;
+  
+  /* Spacing (4px scale) */
+  --sp-0: 0;
+  --sp-1: 0.25rem;   /* 4px */
+  --sp-2: 0.5rem;    /* 8px */
+  --sp-3: 0.75rem;   /* 12px */
+  --sp-4: 1rem;      /* 16px */
+  --sp-5: 1.25rem;   /* 20px */
+  --sp-6: 1.5rem;    /* 24px */
+  --sp-8: 2rem;      /* 32px */
+  --sp-10: 2.5rem;   /* 40px */
+  --sp-12: 3rem;     /* 48px */
+  --sp-16: 4rem;     /* 64px */
+  
+  /* Borders & Radius */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 8px -2px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 16px -4px rgba(0,0,0,0.12), 0 4px 8px -4px rgba(0,0,0,0.08);
+  --shadow-xl: 0 12px 24px -6px rgba(0,0,0,0.15);
+  
+  /* Transitions */
+  --ease-fast: 100ms ease;
+  --ease: 150ms ease;
+  --ease-slow: 250ms ease;
+  
+  /* Layout */
+  --topbar-h: 48px;
+  --sidebar-w-collapsed: 48px;
+  --sidebar-w-expanded: 220px;
+  --content-max: 1280px;
+  --sidebar-transition: 200ms ease;
+  
+  /* Z-Index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-toast: 1070;
+}
+
+/* ===== PALETA 1: DEFAULT (Azul Office 365) ===== */
+:root,
+[data-theme="default"] {
+  /* Primária */
+  --color-primary: #0078d4;
+  --color-primary-hover: #106ebe;
+  --color-primary-active: #005a9e;
+  --color-primary-light: rgba(0, 120, 212, 0.08);
+  --color-primary-medium: rgba(0, 120, 212, 0.16);
+  --color-primary-rgb: 0, 120, 212;
+  
+  /* Perigo/Emergência */
+  --color-danger: #d13438;
+  --color-danger-hover: #a4262c;
+  --color-danger-light: rgba(209, 52, 56, 0.1);
+  --color-danger-medium: rgba(209, 52, 56, 0.2);
+  --color-danger-rgb: 209, 52, 56;
+  
+  /* Sucesso */
+  --color-success: #107c10;
+  --color-success-hover: #0e6e0e;
+  --color-success-light: rgba(16, 124, 16, 0.1);
+  --color-success-rgb: 16, 124, 16;
+  
+  /* Aviso */
+  --color-warning: #ffb900;
+  --color-warning-hover: #e5a600;
+  --color-warning-light: rgba(255, 185, 0, 0.15);
+  --color-warning-rgb: 255, 185, 0;
+  
+  /* Info */
+  --color-info: #0078d4;
+  --color-info-light: rgba(0, 120, 212, 0.1);
+  --color-info-rgb: 0, 120, 212;
+  
+  /* TopBar */
+  --topbar-bg: #0078d4;
+  
+  /* Brand (cor do logo Atento nos ícones) */
+  --brand-color: #ff6b35;
+}
+
+/* ===== PALETA 2: ORANGE (Atento Brand) ===== */
+[data-theme="orange"] {
+  --color-primary: #ff6b35;
+  --color-primary-hover: #e55a2b;
+  --color-primary-active: #cc4d22;
+  --color-primary-light: rgba(255, 107, 53, 0.08);
+  --color-primary-medium: rgba(255, 107, 53, 0.16);
+  --color-primary-rgb: 255, 107, 53;
+  
+  --topbar-bg: #ff6b35;
+  
+  --color-danger: #dc3545;
+  --color-danger-hover: #bb2d3b;
+  --color-danger-light: rgba(220, 53, 69, 0.1);
+  --color-danger-rgb: 220, 53, 69;
+  
+  --color-success: #198754;
+  --color-success-hover: #157347;
+  --color-success-light: rgba(25, 135, 84, 0.1);
+  --color-success-rgb: 25, 135, 84;
+  
+  --color-warning: #ffc107;
+  --color-warning-hover: #e0a800;
+  --color-warning-light: rgba(255, 193, 7, 0.15);
+  --color-warning-rgb: 255, 193, 7;
+  
+  --color-info: #0dcaf0;
+  --color-info-light: rgba(13, 202, 240, 0.1);
+  --color-info-rgb: 13, 202, 240;
+}
+
+/* ===== PALETA 3: GREEN (Verde Enterprise) ===== */
+[data-theme="green"] {
+  --color-primary: #0078d4;
+  --color-primary-hover: #106ebe;
+  --color-primary-active: #005a9e;
+  --color-primary-light: rgba(0, 120, 212, 0.08);
+  --color-primary-medium: rgba(0, 120, 212, 0.16);
+  --color-primary-rgb: 0, 120, 212;
+  
+  --topbar-bg: #0078d4;
+  --brand-color: #107c10;
+  
+  --color-danger: #d13438;
+  --color-danger-hover: #a4262c;
+  --color-danger-light: rgba(209, 52, 56, 0.1);
+  --color-danger-rgb: 209, 52, 56;
+  
+  --color-success: #107c10;
+  --color-success-hover: #0e6e0e;
+  --color-success-light: rgba(16, 124, 16, 0.1);
+  --color-success-rgb: 16, 124, 16;
+}
+
+/* ===== PALETA 4: PURPLE (Roxo Moderno) ===== */
+[data-theme="purple"] {
+  --color-primary: #8764b8;
+  --color-primary-hover: #734ea8;
+  --color-primary-active: #5c3d8f;
+  --color-primary-light: rgba(135, 100, 184, 0.08);
+  --color-primary-medium: rgba(135, 100, 184, 0.16);
+  --color-primary-rgb: 135, 100, 184;
+  
+  --topbar-bg: #8764b8;
+  --brand-color: #8764b8;
+  
+  --color-danger: #d13438;
+  --color-danger-light: rgba(209, 52, 56, 0.1);
+  --color-danger-rgb: 209, 52, 56;
+  
+  --color-success: #107c10;
+  --color-success-light: rgba(16, 124, 16, 0.1);
+  --color-success-rgb: 16, 124, 16;
+  
+  --color-warning: #ffb900;
+  --color-warning-light: rgba(255, 185, 0, 0.15);
+  --color-warning-rgb: 255, 185, 0;
+}
+
+/* ===== PALETA 5: DARK (Tema Escuro) ===== */
+[data-theme="dark"] {
+  --color-primary: #0078d4;
+  --color-primary-hover: #4da3ff;
+  --color-primary-active: #005a9e;
+  --color-primary-light: rgba(0, 120, 212, 0.15);
+  --color-primary-medium: rgba(0, 120, 212, 0.25);
+  --color-primary-rgb: 0, 120, 212;
+  
+  --topbar-bg: #1a1a2e;
+  --brand-color: #ff6b35;
+  
+  --color-danger: #ff6b6b;
+  --color-danger-light: rgba(255, 107, 107, 0.15);
+  --color-danger-rgb: 255, 107, 107;
+  
+  --color-success: #51cf66;
+  --color-success-light: rgba(81, 207, 102, 0.15);
+  --color-success-rgb: 81, 207, 102;
+  
+  --color-warning: #ffd43b;
+  --color-warning-light: rgba(255, 212, 59, 0.15);
+  --color-warning-rgb: 255, 212, 59;
+  
+  --color-info: #74c0fc;
+  --color-info-light: rgba(116, 192, 252, 0.15);
+  --color-info-rgb: 116, 192, 252;
+  
+  /* Override surfaces for dark mode */
+  --surface-bg: #0d1117;
+  --surface-elevated: #161b22;
+  --surface-overlay: #1c2333;
+  --surface-border: #30363d;
+  --surface-border-light: #21262d;
+  
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --text-heading: #f0f6fc;
+  --text-inverse: #0d1117;
+}
+
+/* ===== SURFACES & TEXT (claro por padrão) ===== */
+:root:not([data-theme="dark"]) {
+  --surface-bg: #faf9f8;
+  --surface-elevated: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-alt: #f3f2f1;
+  --surface-hover: #edebe9;
+  --surface-border: #edebe9;
+  --surface-border-light: #f3f2f1;
+  
+  --text-primary: #323130;
+  --text-secondary: #605e5c;
+  --text-muted: #a19f9d;
+  --text-heading: #201f1e;
+  --text-inverse: #ffffff;
+}

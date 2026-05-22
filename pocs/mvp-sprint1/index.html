@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Estilo | Atento Platform MVP</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  
+  <style>
+    .style-guide { max-width: 900px; margin: 0 auto; padding: var(--sp-8) var(--sp-4); }
+    .style-guide h1 { font-size: var(--fs-2xl); margin-bottom: var(--sp-2); }
+    .style-guide .subtitle { color: var(--text-secondary); font-size: var(--fs-base); margin-bottom: var(--sp-8); }
+    .style-guide section { margin-bottom: var(--sp-10); padding-bottom: var(--sp-6); border-bottom: 1px solid var(--surface-border); }
+    .style-guide section:last-child { border-bottom: none; }
+    
+    .color-grid { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+    .color-swatch { display: flex; align-items: center; gap: var(--sp-3); }
+    .color-box { width: 48px; height: 48px; border-radius: var(--radius); border: 1px solid var(--surface-border); }
+    
+    .component-preview { background: var(--surface-elevated); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--sp-5); margin: var(--sp-4) 0; }
+    
+    .theme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--sp-3); }
+    .theme-card { background: var(--surface-elevated); border: 2px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--sp-4); cursor: pointer; transition: all var(--ease); text-align: center; }
+    .theme-card:hover { border-color: var(--color-primary); box-shadow: var(--shadow-sm); }
+    .theme-card.active { border-color: var(--color-primary); background: var(--color-primary-light); }
+    .theme-card .preview-bar { height: 32px; border-radius: var(--radius); margin-bottom: var(--sp-3); }
+    .theme-card .name { font-size: var(--fs-sm); font-weight: var(--fw-medium); }
+    
+    .nav-link-list { display: flex; flex-direction: column; gap: var(--sp-1); }
+    .nav-link-list a { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3) var(--sp-4); border-radius: var(--radius); color: var(--color-primary); text-decoration: none; transition: background-color var(--ease-fast); }
+    .nav-link-list a:hover { background: var(--surface-alt); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Pular para conteúdo</a>
+  
+  <main class="style-guide" id="main">
+    <header>
+      <img src="https://login.atento.com.br/images/Atento_Logo_RGB_AtentoOrange.png" alt="Atento" height="40" style="margin-bottom:var(--sp-4);">
+      <h1>Guia de Estilo Vivo</h1>
+      <p class="subtitle">Atento Platform MVP Sprint 1 — Documentação de componentes e temas</p>
+    </header>
+    
+    <!-- Temas -->
+    <section>
+      <h2>🎨 Temas Disponíveis</h2>
+      <p class="text-small text-muted mb-4">Clique para aplicar o tema em toda a aplicação.</p>
+      <div class="theme-grid" id="theme-showcase"></div>
+    </section>
+    
+    <!-- Cores -->
+    <section>
+      <h2>🎯 Paleta de Cores</h2>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="color-box" style="background:var(--color-primary);"></div><div><strong>Primária</strong><br><code>--color-primary</code></div></div>
+        <div class="color-swatch"><div class="color-box" style="background:var(--color-danger);"></div><div><strong>Perigo</strong><br><code>--color-danger</code></div></div>
+        <div class="color-swatch"><div class="color-box" style="background:var(--color-success);"></div><div><strong>Sucesso</strong><br><code>--color-success</code></div></div>
+        <div class="color-swatch"><div class="color-box" style="background:var(--color-warning);"></div><div><strong>Aviso</strong><br><code>--color-warning</code></div></div>
+        <div class="color-swatch"><div class="color-box" style="background:var(--text-heading);"></div><div><strong>Texto</strong><br><code>--text-heading</code></div></div>
+        <div class="color-swatch"><div class="color-box" style="background:var(--surface-bg);border:1px solid var(--surface-border);"></div><div><strong>Fundo</strong><br><code>--surface-bg</code></div></div>
+      </div>
+    </section>
+    
+    <!-- Botões -->
+    <section>
+      <h2>🔘 Botões</h2>
+      <div class="component-preview">
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-primary"><i class="bi bi-check"></i> Primário</button>
+          <button class="btn btn-secondary"><i class="bi bi-x"></i> Secundário</button>
+          <button class="btn btn-danger"><i class="bi bi-exclamation"></i> Perigo</button>
+          <button class="btn btn-success"><i class="bi bi-check-circle"></i> Sucesso</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-primary btn-sm">Pequeno</button>
+          <button class="btn btn-primary btn-lg">Grande</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Badges -->
+    <section>
+      <h2>🏷️ Badges</h2>
+      <div class="component-preview">
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge badge-primary">Primária</span>
+          <span class="badge badge-danger">Perigo</span>
+          <span class="badge badge-success">Sucesso</span>
+          <span class="badge badge-warning">Aviso</span>
+          <span class="badge badge-muted">Muda</span>
+          <span class="badge badge-solid badge-primary">Sólida</span>
+          <span class="badge badge-solid badge-danger">Sólida</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Cards -->
+    <section>
+      <h2> Cards</h2>
+      <div class="component-preview">
+        <div class="card" style="max-width:360px;">
+          <div class="card-header">Título do Card</div>
+          <div class="card-body">Conteúdo com bordas sutis e padrão minimalista enterprise.</div>
+        </div>
+      </div>
+      <div class="component-preview">
+        <div class="stat-card" style="max-width:280px;">
+          <div class="stat-icon bg-danger-light text-danger"><i class="bi bi-exclamation-triangle"></i></div>
+          <div class="stat-content">
+            <div class="stat-label">Alertas Ativos</div>
+            <div class="stat-value">3</div>
+            <div class="stat-meta">últimas 24h</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Tabela -->
+    <section>
+      <h2> Tabela</h2>
+      <div class="component-preview">
+        <div class="table-container">
+          <table class="data-table table-sm">
+            <thead><tr><th>ID</th><th>Item</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>001</td><td>Exemplo ativo</td><td><span class="badge badge-danger">Ativo</span></td></tr>
+              <tr><td>002</td><td>Exemplo atendendo</td><td><span class="badge badge-primary">Atendendo</span></td></tr>
+              <tr><td>003</td><td>Exemplo encerrado</td><td><span class="badge badge-success">Encerrado</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Botão Pânico -->
+    <section>
+      <h2>🔴 Botão de Pânico</h2>
+      <div class="component-preview text-center">
+        <button class="panic-btn" disabled style="opacity:0.7;">
+          <i class="bi bi-exclamation-triangle"></i>
+          <span>Emergência</span>
+        </button>
+        <p class="text-small text-muted mt-3 mb-0">Discreto com confirmação de 20s</p>
+      </div>
+    </section>
+    
+    <!-- Navegação -->
+    <section>
+      <h2> Telas do MVP</h2>
+      <div class="nav-link-list">
+        <a href="login.html"><i class="bi bi-box-arrow-in-right"></i> login.html</a>
+        <a href="dashboard.html"><i class="bi bi-house-door"></i> dashboard.html</a>
+        <a href="panic-button.html"><i class="bi bi-exclamation-triangle"></i> panic-button.html</a>
+        <a href="monitor-alerts.html"><i class="bi bi-list-check"></i> monitor-alerts.html</a>
+        <a href="national-center.html"><i class="bi bi-globe-americas"></i> national-center.html</a>
+        <a href="users-manage.html"><i class="bi bi-people"></i> users-manage.html</a>
+        <a href="units-manage.html"><i class="bi bi-building"></i> units-manage.html</a>
+      </div>
+    </section>
+    
+    <footer class="text-center text-small text-muted mt-8">
+      <p>Atento Platform • MVP Sprint 1 • Stack: HTML5 + CSS3 + VanillaJS</p>
+      <p>Design System: Office 365 Inspired • Flexível para múltiplos temas</p>
+    </footer>
+  </main>
+  
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/themes.js"></script>
+  <script>
+    // Theme showcase
+    const showcase = document.getElementById('theme-showcase');
+    if (showcase) {
+      showcase.innerHTML = THEMES.map(t => `
+        <div class="theme-card ${t.id === (localStorage.getItem('app-theme')||'default') ? 'active' : ''}" onclick="setTheme('${t.id}');this.parentElement.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('active'));this.classList.add('active');">
+          <div class="preview-bar" style="background:${t.color};"></div>
+          <div class="name">${t.name}</div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

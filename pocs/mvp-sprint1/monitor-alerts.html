@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ocorrências | Atento Platform</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Pular para conteúdo</a>
+  
+  <header class="topbar" role="banner">
+    <button class="app-launcher"><div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></button>
+    <div class="topbar-brand"><img src="https://login.atento.com.br/images/Atento_Logo_RGB_AtentoOrange.png" alt="Atento"><span>Atento Platform</span></div>
+    <div class="topbar-search"><input type="search" placeholder="Pesquisar..."><i class="bi bi-search search-icon"></i></div>
+    <div class="topbar-actions">
+      <button class="topbar-btn"><i class="bi bi-bell"></i><span class="notif-dot"></span></button>
+      <button class="topbar-btn"><i class="bi bi-question-circle"></i></button>
+      <div class="topbar-avatar" style="background:var(--brand-color,#ff6b35);">MS</div>
+    </div>
+  </header>
+  
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-toggle" id="sidebar-toggle"><i class="bi bi-grid"></i></button>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon"><i class="bi bi-house-door"></i></span><span class="nav-label">Dashboard</span><span class="tooltip-text">Dashboard</span></a>
+      <a href="panic-button.html" class="nav-item"><span class="nav-icon"><i class="bi bi-exclamation-triangle"></i></span><span class="nav-label">Alerta de Pânico</span><span class="tooltip-text">Alerta de Pânico</span></a>
+      <a href="monitor-alerts.html" class="nav-item active"><span class="nav-icon"><i class="bi bi-list-check"></i></span><span class="nav-label">Ocorrências</span><span class="tooltip-text">Ocorrências</span></a>
+      <div class="nav-divider"></div>
+      <a href="monitor-alerts.html" class="nav-item"><span class="nav-icon"><i class="bi bi-display"></i></span><span class="nav-label">Monitor Local</span><span class="tooltip-text">Monitor Local</span></a>
+      <a href="national-center.html" class="nav-item"><span class="nav-icon"><i class="bi bi-globe-americas"></i></span><span class="nav-label">Central Nacional</span><span class="tooltip-text">Central Nacional</span></a>
+      <div class="nav-divider"></div>
+      <a href="users-manage.html" class="nav-item"><span class="nav-icon"><i class="bi bi-people"></i></span><span class="nav-label">Usuários</span><span class="tooltip-text">Usuários</span></a>
+      <a href="units-manage.html" class="nav-item"><span class="nav-icon"><i class="bi bi-building"></i></span><span class="nav-label">Unidades</span><span class="tooltip-text">Unidades</span></a>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="nav-item"><span class="nav-icon"><i class="bi bi-gear"></i></span><span class="nav-label">Configurações</span><span class="tooltip-text">Configurações</span></a></div>
+  </aside>
+  
+  <main class="main-content" id="main">
+    <div class="content-wrapper">
+      <div class="page-header d-flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h1>Ocorrências</h1>
+          <nav class="breadcrumb"><a href="dashboard.html">Dashboard</a><span class="separator">/</span><span>Ocorrências</span></nav>
+        </div>
+        <div class="d-flex items-center gap-3">
+          <span class="text-small text-muted" id="header-clock">--:--:--</span>
+          <span class="badge badge-danger">● 1 Ativo</span>
+        </div>
+      </div>
+      
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="toolbar-filters">
+          <button class="filter-pill active">Todos</button>
+          <button class="filter-pill">Ativos</button>
+          <button class="filter-pill">Atendendo</button>
+          <button class="filter-pill">Encerrados</button>
+        </div>
+        <div class="toolbar-search">
+          <i class="bi bi-search"></i>
+          <input type="search" class="form-control" placeholder="Buscar ocorrência...">
+        </div>
+      </div>
+      
+      <!-- Table -->
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Unidade</th>
+                <th>Horário</th>
+                <th>Duração</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="alerts-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div class="mt-4 d-flex gap-4 text-small text-muted">
+        <span><span class="badge badge-danger me-1">●</span> Ativo</span>
+        <span><span class="badge badge-primary me-1">●</span> Atendendo</span>
+        <span><span class="badge badge-success me-1">●</span> Encerrado</span>
+      </div>
+    </div>
+  </main>
+  
+  <button class="topbar-btn no-print" id="mobile-menu-btn" style="display:none;position:fixed;bottom:var(--sp-4);right:var(--sp-4);background:var(--color-primary);border-radius:50%;width:48px;height:48px;z-index:999;box-shadow:var(--shadow-lg);">
+    <i class="bi bi-list" style="font-size:1.25rem;"></i>
+  </button>
+  
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script>renderAlertsTable('alerts-table-body', MOCK.alerts, false, true);</script>
+  <style>@media(max-width:768px){#mobile-menu-btn{display:flex!important;align-items:center;justify-content:center;}}</style>
+</body>
+</html>
