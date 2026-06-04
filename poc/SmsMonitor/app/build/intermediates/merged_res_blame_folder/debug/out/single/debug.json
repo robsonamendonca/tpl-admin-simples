@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.monitor.sms.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "com.monitor.sms.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.monitor.sms.app-merged_res-34:/raw_auth_config.json.flat",
+        "source": "com.monitor.sms.app-main-36:/raw/auth_config.json"
+    }
+]

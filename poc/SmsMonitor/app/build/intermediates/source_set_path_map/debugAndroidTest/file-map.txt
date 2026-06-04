@@ -1,0 +1,4 @@
+com.monitor.sms.test.app-androidTest-0 C:\git\estudos\klotin\SmsMonitor\app\build\generated\res\resValues\androidTest\debug
+com.monitor.sms.test.app-mergeDebugAndroidTestResources-1 C:\git\estudos\klotin\SmsMonitor\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.monitor.sms.test.app-mergeDebugAndroidTestResources-2 C:\git\estudos\klotin\SmsMonitor\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.monitor.sms.test.app-merged_res-3 C:\git\estudos\klotin\SmsMonitor\app\build\intermediates\merged_res\debugAndroidTest

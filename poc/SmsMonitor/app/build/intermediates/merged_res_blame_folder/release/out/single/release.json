@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.monitor.sms.app-merged_res-28:/layout_activity_main.xml.flat",
+        "source": "com.monitor.sms.app-main-29:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\usuario\\.gradle\\daemon\\8.4\\com.monitor.sms.app-merged_res-28:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\usuario\\.gradle\\daemon\\8.4\\com.monitor.sms.app-main-29:\\layout\\activity_main.xml"
+    }
+]

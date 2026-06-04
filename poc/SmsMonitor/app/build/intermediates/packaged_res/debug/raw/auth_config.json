@@ -1,0 +1,13 @@
+{
+  "client_id": "CLIENT_ID_PLACEHOLDER",
+  "authorization_user_agent": "DEFAULT",
+  "redirect_uri": "msauth://com.monitor.sms/SIGNATURE_HASH_PLACEHOLDER",
+  "authorities": [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADandPersonalMicrosoftAccount"
+      }
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.0.2" type="incidents">
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Monitor de SMS&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="13"
+            column="9"
+            startOffset="433"
+            endLine="13"
+            endColumn="38"
+            endOffset="462"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Iniciando...&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="22"
+            column="9"
+            startOffset="722"
+            endLine="22"
+            endColumn="36"
+            endOffset="749"/>
+    </incident>
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Total de SMS: 0\nNenhum SMS recente.&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="31"
+            column="9"
+            startOffset="1012"
+            endLine="31"
+            endColumn="60"
+            endOffset="1063"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="36"
+            column="31"
+            startOffset="1075"
+            endLine="36"
+            endColumn="84"
+            endOffset="1128"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="36"
+            column="32"
+            startOffset="1076"
+            endLine="36"
+            endColumn="59"
+            endOffset="1103"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="36"
+            column="61"
+            startOffset="1105"
+            endLine="36"
+            endColumn="83"
+            endOffset="1127"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="38"
+            column="32"
+            startOffset="1177"
+            endLine="38"
+            endColumn="64"
+            endOffset="1209"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="67"
+            column="24"
+            startOffset="2113"
+            endLine="67"
+            endColumn="91"
+            endOffset="2180"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="67"
+            column="25"
+            startOffset="2114"
+            endLine="67"
+            endColumn="39"
+            endOffset="2128"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="67"
+            column="49"
+            startOffset="2138"
+            endLine="67"
+            endColumn="65"
+            endOffset="2154"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="67"
+            column="67"
+            startOffset="2156"
+            endLine="67"
+            endColumn="71"
+            endOffset="2160"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="67"
+            column="80"
+            startOffset="2169"
+            endLine="67"
+            endColumn="85"
+            endOffset="2174"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="94"
+            column="35"
+            startOffset="3337"
+            endLine="94"
+            endColumn="88"
+            endOffset="3390"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="94"
+            column="36"
+            startOffset="3338"
+            endLine="94"
+            endColumn="63"
+            endOffset="3365"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="94"
+            column="65"
+            startOffset="3367"
+            endLine="94"
+            endColumn="87"
+            endOffset="3389"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="97"
+            column="35"
+            startOffset="3534"
+            endLine="97"
+            endColumn="85"
+            endOffset="3584"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="97"
+            column="36"
+            startOffset="3535"
+            endLine="97"
+            endColumn="65"
+            endOffset="3564"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/monitor/sms/MainActivity.kt"
+            line="97"
+            column="67"
+            startOffset="3566"
+            endLine="97"
+            endColumn="84"
+            endOffset="3583"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.18.0">
+        <fix-replace
+            description="Change to 1.18.0"
+            family="Update versions"
+            oldString="1.10.1"
+            replacement="1.18.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="34"
+            column="20"
+            startOffset="706"
+            endLine="34"
+            endColumn="51"
+            endOffset="737"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1">
+        <fix-replace
+            description="Change to 1.7.1"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="35"
+            column="20"
+            startOffset="757"
+            endLine="35"
+            endColumn="56"
+            endOffset="793"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.9.0 is available: 1.13.0">
+        <fix-replace
+            description="Change to 1.13.0"
+            family="Update versions"
+            oldString="1.9.0"
+            replacement="1.13.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="36"
+            column="20"
+            startOffset="813"
+            endLine="36"
+            endColumn="64"
+            endOffset="857"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1">
+        <fix-replace
+            description="Change to 2.2.1"
+            family="Update versions"
+            oldString="2.1.4"
+            replacement="2.2.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="37"
+            column="20"
+            startOffset="877"
+            endLine="37"
+            endColumn="70"
+            endOffset="927"/>
+    </incident>
+
+</incidents>

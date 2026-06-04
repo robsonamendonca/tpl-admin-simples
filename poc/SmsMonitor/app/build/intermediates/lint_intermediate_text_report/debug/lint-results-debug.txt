@@ -1,0 +1,131 @@
+C:\git\estudos\klotin\SmsMonitor\app\build.gradle:34: Warning: A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.18.0 [GradleDependency]
+    implementation 'androidx.core:core-ktx:1.10.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\build.gradle:35: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.1 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\build.gradle:36: Warning: A newer version of com.google.android.material:material than 1.9.0 is available: 1.13.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.9.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\build.gradle:37: Warning: A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1 [GradleDependency]
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\git\estudos\klotin\SmsMonitor\app\src\main\AndroidManifest.xml:6: Error: Permission exists without corresponding hardware <uses-feature android:name="android.hardware.telephony" required="false"> tag [PermissionImpliesUnsupportedChromeOsHardware]
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+     ~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\AndroidManifest.xml:7: Error: Permission exists without corresponding hardware <uses-feature android:name="android.hardware.telephony" required="false"> tag [PermissionImpliesUnsupportedChromeOsHardware]
+    <uses-permission android:name="android.permission.READ_SMS" />
+     ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "PermissionImpliesUnsupportedChromeOsHardware":
+   The <uses-permission> element should not require a permission that implies
+   an unsupported large screen hardware feature. Google Play assumes that
+   certain hardware related permissions indicate that the underlying hardware
+   features are required by default. To fix the issue, consider declaring the
+   corresponding <uses-feature> element with required="false" attribute.
+
+   https://developer.android.com/topic/arc/manifest.html#implied-features
+
+C:\git\estudos\klotin\SmsMonitor\app\src\main\AndroidManifest.xml:10: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:36: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:36: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:36: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                                                            ~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:38: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            statusText.text = "Status: Aguardando Permissões..."
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:67: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        logText.text = "Total de SMS: $count\n\nÚltimo recebido:\nDe: $sender\nMsg: $body"
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:67: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        logText.text = "Total de SMS: $count\n\nÚltimo recebido:\nDe: $sender\nMsg: $body"
+                        ~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:67: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        logText.text = "Total de SMS: $count\n\nÚltimo recebido:\nDe: $sender\nMsg: $body"
+                                                ~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:67: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        logText.text = "Total de SMS: $count\n\nÚltimo recebido:\nDe: $sender\nMsg: $body"
+                                                                  ~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:67: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        logText.text = "Total de SMS: $count\n\nÚltimo recebido:\nDe: $sender\nMsg: $body"
+                                                                               ~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:94: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:94: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:94: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Ativo\nPermissões Concedidas."
+                                                                ~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:97: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Inativo\nPermissão Negada."
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:97: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Inativo\nPermissão Negada."
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\java\com\monitor\sms\MainActivity.kt:97: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                statusText.text = "Status: Monitoramento Inativo\nPermissão Negada."
+                                                                  ~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+C:\git\estudos\klotin\SmsMonitor\app\src\main\res\layout\activity_main.xml:13: Warning: Hardcoded string "Monitor de SMS", should use @string resource [HardcodedText]
+        android:text="Monitor de SMS"
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\res\layout\activity_main.xml:22: Warning: Hardcoded string "Iniciando...", should use @string resource [HardcodedText]
+        android:text="Iniciando..."
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\git\estudos\klotin\SmsMonitor\app\src\main\res\layout\activity_main.xml:31: Warning: Hardcoded string "Total de SMS: 0nNenhum SMS recente.", should use @string resource [HardcodedText]
+        android:text="Total de SMS: 0\nNenhum SMS recente."
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "HardcodedText":
+   Hardcoding text attributes directly in layout files is bad for several
+   reasons:
+
+   * When creating configuration variations (for example for landscape or
+   portrait) you have to repeat the actual text (and keep it up to date when
+   making changes)
+
+   * The application cannot be translated to other languages by just adding
+   new translations for existing string resources.
+
+   There are quickfixes to automatically extract this hardcoded string into a
+   resource lookup.
+
+2 errors, 23 warnings
