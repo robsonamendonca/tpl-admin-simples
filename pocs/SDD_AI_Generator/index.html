@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de SDD para IA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerador de SDD para IA</h1>
+            <p>Padronize a documentacao de sistemas de Chat e Revisao de Codigo para LLMs.</p>
+        </header>
+
+        <main>
+            <div class="form-section">
+                <label for="templateType">Tipo de Sistema:</label>
+                <select id="templateType">
+                    <option value="chat">Sistema de Chat com IA</option>
+                    <option value="review">Agente de Revisao de Codigo</option>
+                </select>
+
+                <label for="projectName">Nome do Projeto:</label>
+                <input type="text" id="projectName" placeholder="Ex: Bot de Suporte v2">
+
+                <label for="customRules">Regras de Negocio Especificas (uma por linha):</label>
+                <textarea id="customRules" rows="4" placeholder="Ex: Integrar com API de pagamento"></textarea>
+
+                <button id="generateBtn">Gerar SDD Padronizado</button>
+            </div>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <h2>Documento Gerado (Prompt/SDD)</h2>
+                    <button id="copyBtn" class="secondary">Copiar</button>
+                </div>
+                <pre><code id="outputCode">Selecione as opcoes e clique em gerar...</code></pre>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

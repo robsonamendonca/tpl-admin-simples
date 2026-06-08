@@ -1,1 +1,0 @@
-[2026-06-04 22:34:29] [device:dev_6a21fd4de5f8f] DE: +551199999 | MENSAGEM: Teste SMS de automacao

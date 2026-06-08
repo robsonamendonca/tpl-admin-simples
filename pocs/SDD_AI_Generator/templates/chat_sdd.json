@@ -1,0 +1,13 @@
+﻿{
+  "tipo": "SDD - Sistema de Chat com IA",
+  "contexto": "O sistema e um assistente conversacional que deve manter o contexto da conversa e fornecer respostas uteis e seguras.",
+  "objetivo": "Processar entradas do usuario, identificar intencoes e gerar respostas em texto natural seguindo as diretrizes de tom e estilo.",
+  "regras_de_negocio": [
+    "Manter historico de ate N mensagens para contexto.",
+    "Recusar educadamente solicitacoes que violem as politicas de seguranca.",
+    "Tempo de resposta maximo (latencia): < 2 segundos."
+  ],
+  "formato_entrada_esperado": "JSON contendo { 'user_id': string, 'message': string, 'history': array }",
+  "formato_saida_esperado": "JSON contendo { 'response': string, 'confidence_score': float, 'flags': array }",
+  "instrucoes_para_ia": "Aja como um engenheiro de software senior. Ao gerar codigo ou explicacoes, seja conciso e use markdown."
+}
